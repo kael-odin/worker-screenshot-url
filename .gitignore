@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Output files
+output.jsonl
+*.png
+*.jpeg
+*.pdf
+execution.log
+
+# Test reports (keep test-report.json)
+# test-report.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp
+*.tmp
+*.temp

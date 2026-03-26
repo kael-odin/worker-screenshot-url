@@ -1,0 +1,120 @@
+{
+  "timestamp": "2026-03-26T08:07:42.066Z",
+  "total": 22,
+  "passed": 22,
+  "failed": 0,
+  "skipped": 0,
+  "time": 26051,
+  "results": [
+    {
+      "name": "URL Parsing",
+      "status": "PASS",
+      "time": 1
+    },
+    {
+      "name": "Screenshot Name Generation",
+      "status": "PASS",
+      "time": 1
+    },
+    {
+      "name": "Config Validation",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "Selectors Parsing",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "Browser Launch (Local)",
+      "status": "PASS",
+      "time": 1654
+    },
+    {
+      "name": "Screenshot PNG",
+      "status": "PASS",
+      "time": 1889
+    },
+    {
+      "name": "Screenshot JPEG",
+      "status": "PASS",
+      "time": 2080
+    },
+    {
+      "name": "Screenshot PDF",
+      "status": "PASS",
+      "time": 2096
+    },
+    {
+      "name": "Screenshot Full Page",
+      "status": "PASS",
+      "time": 2233
+    },
+    {
+      "name": "Viewport Settings",
+      "status": "PASS",
+      "time": 1373
+    },
+    {
+      "name": "Scroll to Bottom",
+      "status": "PASS",
+      "time": 1814
+    },
+    {
+      "name": "Hide Selectors",
+      "status": "PASS",
+      "time": 1914
+    },
+    {
+      "name": "Cafe Input Format",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "Cafe stringList Single",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "Cafe stringList Multiple",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "E2E Single URL",
+      "status": "PASS",
+      "time": 3423
+    },
+    {
+      "name": "E2E Multiple URLs",
+      "status": "PASS",
+      "time": 4844
+    },
+    {
+      "name": "Error Invalid URL",
+      "status": "PASS",
+      "time": 1328
+    },
+    {
+      "name": "Error Timeout",
+      "status": "PASS",
+      "time": 1394
+    },
+    {
+      "name": "File Structure",
+      "status": "PASS",
+      "time": 0
+    },
+    {
+      "name": "Input Schema Valid",
+      "status": "PASS",
+      "time": 1
+    },
+    {
+      "name": "Package JSON Valid",
+      "status": "PASS",
+      "time": 0
+    }
+  ]
+}

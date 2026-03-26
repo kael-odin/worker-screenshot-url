@@ -1,0 +1,117 @@
+{
+  "title": "URL Screenshot Worker",
+  "description": "Takes screenshots of specified web pages with various customization options",
+  "type": "object",
+  "properties": {
+    "urls": {
+      "title": "URLs to Screenshot",
+      "type": "array",
+      "description": "List of URLs to take screenshots of",
+      "editor": "requestList",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "URL",
+            "type": "string",
+            "description": "URL to screenshot"
+          }
+        }
+      },
+      "default": []
+    },
+    "viewportWidth": {
+      "title": "Viewport Width",
+      "type": "integer",
+      "description": "Browser viewport width in pixels (100-3840)",
+      "default": 1280,
+      "minimum": 100,
+      "maximum": 3840
+    },
+    "format": {
+      "title": "Output Format",
+      "type": "string",
+      "description": "Screenshot output format",
+      "default": "png",
+      "enum": ["png", "jpeg", "pdf"],
+      "editor": "select"
+    },
+    "fullPage": {
+      "title": "Full Page Screenshot",
+      "type": "boolean",
+      "description": "Take screenshot of the entire page (not just viewport)",
+      "default": true,
+      "editor": "switch"
+    },
+    "scrollToBottom": {
+      "title": "Scroll to Bottom",
+      "type": "boolean",
+      "description": "Scroll to the bottom of the page before taking screenshot",
+      "default": false,
+      "editor": "switch"
+    },
+    "delayAfterScrolling": {
+      "title": "Delay After Scrolling (ms)",
+      "type": "integer",
+      "description": "Delay in milliseconds after scrolling to bottom",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 300000
+    },
+    "waitUntil": {
+      "title": "Wait Until",
+      "type": "string",
+      "description": "When to consider page navigation complete",
+      "default": "networkidle2",
+      "enum": ["load", "domcontentloaded", "networkidle0", "networkidle2"],
+      "editor": "select"
+    },
+    "delay": {
+      "title": "Delay Before Screenshot (ms)",
+      "type": "integer",
+      "description": "Additional delay in milliseconds before taking screenshot",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 300000
+    },
+    "timeout": {
+      "title": "Page Timeout (seconds)",
+      "type": "integer",
+      "description": "Maximum time to wait for page load in seconds",
+      "default": 60,
+      "minimum": 10,
+      "maximum": 300
+    },
+    "selectorsToHide": {
+      "title": "Selectors to Hide",
+      "type": "array",
+      "description": "CSS selectors to hide before taking screenshot",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "editor": "stringList"
+    },
+    "waitForSelector": {
+      "title": "Wait for Selector",
+      "type": "string",
+      "description": "Wait for this selector to appear before taking screenshot",
+      "default": ""
+    },
+    "blockAds": {
+      "title": "Block Ads and Trackers",
+      "type": "boolean",
+      "description": "Block ads and tracking scripts",
+      "default": true,
+      "editor": "switch"
+    },
+    "debugMode": {
+      "title": "Debug Mode",
+      "type": "boolean",
+      "description": "Enable detailed debug logging",
+      "default": false,
+      "editor": "switch"
+    }
+  },
+  "required": ["urls"]
+}
