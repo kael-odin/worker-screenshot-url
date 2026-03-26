@@ -1,119 +1,126 @@
 {
-  "title": "网页截图工具 | Website Screenshot Tool",
-  "description": "对指定网页进行截图，支持PNG/JPEG/PDF格式输出，全页面截图，批量处理 | Capture screenshots of webpages with PNG/JPEG/PDF output, full page support, batch processing",
-  "type": "object",
-  "properties": {
-    "urls": {
+  "description": "对指定网页进行截图，支持PNG/JPEG/PDF格式输出，全页面截图，批量处理。Capture screenshots of webpages with PNG/JPEG/PDF output, full page support, batch processing.",
+  "b": "urls",
+  "properties": [
+    {
       "title": "网页地址 | URLs",
+      "name": "urls",
       "type": "array",
-      "description": "要截图的网页地址列表 | List of webpage URLs to capture",
       "editor": "requestList",
-      "items": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "title": "地址 | URL",
-            "type": "string",
-            "description": "网页地址 | Webpage URL"
-          }
+      "description": "要截图的网页地址列表 | List of webpage URLs to capture",
+      "default": [
+        {
+          "url": "https://example.com"
         }
-      },
+      ],
+      "required": true
+    },
+    {
+      "title": "浏览器宽度 | Viewport Width",
+      "name": "viewportWidth",
+      "type": "integer",
+      "editor": "number",
+      "description": "浏览器宽度（像素）100-3840 | Browser width in pixels (100-3840)",
+      "default": 1280
+    },
+    {
+      "title": "输出格式 | Output Format",
+      "name": "format",
+      "type": "string",
+      "editor": "select",
+      "description": "截图输出格式 | Screenshot output format",
+      "options": [
+        { "label": "PNG (无损)", "value": "png" },
+        { "label": "JPEG (压缩)", "value": "jpeg" },
+        { "label": "PDF (文档)", "value": "pdf" }
+      ],
+      "default": "png"
+    },
+    {
+      "title": "全页面截图 | Full Page",
+      "name": "fullPage",
+      "type": "boolean",
+      "editor": "switch",
+      "description": "截取整个页面（非仅视口区域）| Capture entire page (not just viewport)",
+      "default": true
+    },
+    {
+      "title": "滚动到底部 | Scroll to Bottom",
+      "name": "scrollToBottom",
+      "type": "boolean",
+      "editor": "switch",
+      "description": "截图前滚动到页面底部 | Scroll to page bottom before capture",
+      "default": false
+    },
+    {
+      "title": "滚动后等待(ms) | Delay After Scroll",
+      "name": "delayAfterScrolling",
+      "type": "integer",
+      "editor": "number",
+      "description": "滚动后等待时间（毫秒）| Wait time after scrolling (ms)",
+      "default": 0
+    },
+    {
+      "title": "页面加载条件 | Wait Until",
+      "name": "waitUntil",
+      "type": "string",
+      "editor": "select",
+      "description": "何时认为页面加载完成 | When to consider page navigation complete",
+      "options": [
+        { "label": "完全加载", "value": "load" },
+        { "label": "DOM就绪", "value": "domcontentloaded" },
+        { "label": "网络空闲(严格)", "value": "networkidle0" },
+        { "label": "网络空闲(宽松)", "value": "networkidle2" }
+      ],
+      "default": "networkidle2"
+    },
+    {
+      "title": "截图前等待(ms) | Delay Before Capture",
+      "name": "delay",
+      "type": "integer",
+      "editor": "number",
+      "description": "截图前额外等待时间（毫秒）| Additional wait time before capture (ms)",
+      "default": 0
+    },
+    {
+      "title": "加载超时(秒) | Page Timeout",
+      "name": "timeout",
+      "type": "integer",
+      "editor": "number",
+      "description": "页面加载超时时间（秒）| Page load timeout (seconds)",
+      "default": 60
+    },
+    {
+      "title": "隐藏元素 | Elements to Hide",
+      "name": "selectorsToHide",
+      "type": "array",
+      "editor": "stringList",
+      "description": "截图前隐藏的CSS选择器（如广告、弹窗）| CSS selectors to hide before capture",
       "default": []
     },
-    "viewportWidth": {
-      "title": "浏览器宽度 | Viewport Width",
-      "type": "integer",
-      "description": "浏览器宽度（像素）| Browser width in pixels (100-3840)",
-      "default": 1280,
-      "minimum": 100,
-      "maximum": 3840
-    },
-    "format": {
-      "title": "输出格式 | Output Format",
-      "type": "string",
-      "description": "截图输出格式 | Screenshot output format",
-      "default": "png",
-      "enum": ["png", "jpeg", "pdf"],
-      "editor": "select",
-      "enumTitles": ["PNG (无损)", "JPEG (压缩)", "PDF (文档)"]
-    },
-    "fullPage": {
-      "title": "全页面截图 | Full Page",
-      "type": "boolean",
-      "description": "截取整个页面（非仅视口区域）| Capture entire page (not just viewport)",
-      "default": true,
-      "editor": "switch"
-    },
-    "scrollToBottom": {
-      "title": "滚动到底部 | Scroll to Bottom",
-      "type": "boolean",
-      "description": "截图前滚动到页面底部 | Scroll to page bottom before capture",
-      "default": false,
-      "editor": "switch"
-    },
-    "delayAfterScrolling": {
-      "title": "滚动后等待 | Delay After Scroll",
-      "type": "integer",
-      "description": "滚动后等待时间（毫秒）| Wait time after scrolling (ms)",
-      "default": 0,
-      "minimum": 0,
-      "maximum": 300000
-    },
-    "waitUntil": {
-      "title": "页面加载条件 | Wait Until",
-      "type": "string",
-      "description": "何时认为页面加载完成 | When to consider page navigation complete",
-      "default": "networkidle2",
-      "enum": ["load", "domcontentloaded", "networkidle0", "networkidle2"],
-      "editor": "select",
-      "enumTitles": ["完全加载", "DOM就绪", "网络空闲(严格)", "网络空闲(宽松)"]
-    },
-    "delay": {
-      "title": "截图前等待 | Delay Before Capture",
-      "type": "integer",
-      "description": "截图前额外等待时间（毫秒）| Additional wait time before capture (ms)",
-      "default": 0,
-      "minimum": 0,
-      "maximum": 300000
-    },
-    "timeout": {
-      "title": "加载超时 | Page Timeout",
-      "type": "integer",
-      "description": "页面加载超时时间（秒）| Page load timeout (seconds)",
-      "default": 60,
-      "minimum": 10,
-      "maximum": 300
-    },
-    "selectorsToHide": {
-      "title": "隐藏元素 | Elements to Hide",
-      "type": "array",
-      "description": "截图前隐藏的CSS选择器（如广告、弹窗）| CSS selectors to hide before capture (e.g., ads, popups)",
-      "items": {
-        "type": "string"
-      },
-      "default": [],
-      "editor": "stringList"
-    },
-    "waitForSelector": {
+    {
       "title": "等待元素 | Wait for Element",
+      "name": "waitForSelector",
       "type": "string",
+      "editor": "input",
       "description": "等待指定元素出现后再截图 | Wait for this selector before capture",
       "default": ""
     },
-    "blockAds": {
+    {
       "title": "拦截广告 | Block Ads",
+      "name": "blockAds",
       "type": "boolean",
+      "editor": "switch",
       "description": "自动拦截广告和追踪脚本 | Auto-block ads and tracking scripts",
-      "default": true,
-      "editor": "switch"
+      "default": true
     },
-    "debugMode": {
+    {
       "title": "调试模式 | Debug Mode",
+      "name": "debugMode",
       "type": "boolean",
+      "editor": "switch",
       "description": "启用详细日志输出 | Enable detailed debug logging",
-      "default": false,
-      "editor": "switch"
+      "default": false
     }
-  },
-  "required": ["urls"]
+  ]
 }
