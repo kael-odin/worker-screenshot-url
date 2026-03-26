@@ -1,7 +1,19 @@
 {
-  "name": "worker-screenshot-url",
+  "name": "screenshot-url",
   "version": "1.0.0",
-  "description": "CafeScraper Worker - Takes screenshots of web pages",
+  "description": "网页截图工具 - 批量截图、多格式输出、全页面截图 | Website Screenshot Tool - Batch capture, multiple formats, full page screenshots",
+  "keywords": [
+    "screenshot",
+    "webpage",
+    "capture",
+    "png",
+    "jpeg",
+    "pdf",
+    "full-page",
+    "batch-screenshot",
+    "website-monitoring",
+    "web-capture"
+  ],
   "main": "main.js",
   "scripts": {
     "start": "node main.js",

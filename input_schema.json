@@ -1,91 +1,93 @@
 {
-  "title": "URL Screenshot Worker",
-  "description": "Takes screenshots of specified web pages with various customization options",
+  "title": "网页截图工具 | Website Screenshot Tool",
+  "description": "对指定网页进行截图，支持PNG/JPEG/PDF格式输出，全页面截图，批量处理 | Capture screenshots of webpages with PNG/JPEG/PDF output, full page support, batch processing",
   "type": "object",
   "properties": {
     "urls": {
-      "title": "URLs to Screenshot",
+      "title": "网页地址 | URLs",
       "type": "array",
-      "description": "List of URLs to take screenshots of",
+      "description": "要截图的网页地址列表 | List of webpage URLs to capture",
       "editor": "requestList",
       "items": {
         "type": "object",
         "properties": {
           "url": {
-            "title": "URL",
+            "title": "地址 | URL",
             "type": "string",
-            "description": "URL to screenshot"
+            "description": "网页地址 | Webpage URL"
           }
         }
       },
       "default": []
     },
     "viewportWidth": {
-      "title": "Viewport Width",
+      "title": "浏览器宽度 | Viewport Width",
       "type": "integer",
-      "description": "Browser viewport width in pixels (100-3840)",
+      "description": "浏览器宽度（像素）| Browser width in pixels (100-3840)",
       "default": 1280,
       "minimum": 100,
       "maximum": 3840
     },
     "format": {
-      "title": "Output Format",
+      "title": "输出格式 | Output Format",
       "type": "string",
-      "description": "Screenshot output format",
+      "description": "截图输出格式 | Screenshot output format",
       "default": "png",
       "enum": ["png", "jpeg", "pdf"],
-      "editor": "select"
+      "editor": "select",
+      "enumTitles": ["PNG (无损)", "JPEG (压缩)", "PDF (文档)"]
     },
     "fullPage": {
-      "title": "Full Page Screenshot",
+      "title": "全页面截图 | Full Page",
       "type": "boolean",
-      "description": "Take screenshot of the entire page (not just viewport)",
+      "description": "截取整个页面（非仅视口区域）| Capture entire page (not just viewport)",
       "default": true,
       "editor": "switch"
     },
     "scrollToBottom": {
-      "title": "Scroll to Bottom",
+      "title": "滚动到底部 | Scroll to Bottom",
       "type": "boolean",
-      "description": "Scroll to the bottom of the page before taking screenshot",
+      "description": "截图前滚动到页面底部 | Scroll to page bottom before capture",
       "default": false,
       "editor": "switch"
     },
     "delayAfterScrolling": {
-      "title": "Delay After Scrolling (ms)",
+      "title": "滚动后等待 | Delay After Scroll",
       "type": "integer",
-      "description": "Delay in milliseconds after scrolling to bottom",
+      "description": "滚动后等待时间（毫秒）| Wait time after scrolling (ms)",
       "default": 0,
       "minimum": 0,
       "maximum": 300000
     },
     "waitUntil": {
-      "title": "Wait Until",
+      "title": "页面加载条件 | Wait Until",
       "type": "string",
-      "description": "When to consider page navigation complete",
+      "description": "何时认为页面加载完成 | When to consider page navigation complete",
       "default": "networkidle2",
       "enum": ["load", "domcontentloaded", "networkidle0", "networkidle2"],
-      "editor": "select"
+      "editor": "select",
+      "enumTitles": ["完全加载", "DOM就绪", "网络空闲(严格)", "网络空闲(宽松)"]
     },
     "delay": {
-      "title": "Delay Before Screenshot (ms)",
+      "title": "截图前等待 | Delay Before Capture",
       "type": "integer",
-      "description": "Additional delay in milliseconds before taking screenshot",
+      "description": "截图前额外等待时间（毫秒）| Additional wait time before capture (ms)",
       "default": 0,
       "minimum": 0,
       "maximum": 300000
     },
     "timeout": {
-      "title": "Page Timeout (seconds)",
+      "title": "加载超时 | Page Timeout",
       "type": "integer",
-      "description": "Maximum time to wait for page load in seconds",
+      "description": "页面加载超时时间（秒）| Page load timeout (seconds)",
       "default": 60,
       "minimum": 10,
       "maximum": 300
     },
     "selectorsToHide": {
-      "title": "Selectors to Hide",
+      "title": "隐藏元素 | Elements to Hide",
       "type": "array",
-      "description": "CSS selectors to hide before taking screenshot",
+      "description": "截图前隐藏的CSS选择器（如广告、弹窗）| CSS selectors to hide before capture (e.g., ads, popups)",
       "items": {
         "type": "string"
       },
@@ -93,22 +95,22 @@
       "editor": "stringList"
     },
     "waitForSelector": {
-      "title": "Wait for Selector",
+      "title": "等待元素 | Wait for Element",
       "type": "string",
-      "description": "Wait for this selector to appear before taking screenshot",
+      "description": "等待指定元素出现后再截图 | Wait for this selector before capture",
       "default": ""
     },
     "blockAds": {
-      "title": "Block Ads and Trackers",
+      "title": "拦截广告 | Block Ads",
       "type": "boolean",
-      "description": "Block ads and tracking scripts",
+      "description": "自动拦截广告和追踪脚本 | Auto-block ads and tracking scripts",
       "default": true,
       "editor": "switch"
     },
     "debugMode": {
-      "title": "Debug Mode",
+      "title": "调试模式 | Debug Mode",
       "type": "boolean",
-      "description": "Enable detailed debug logging",
+      "description": "启用详细日志输出 | Enable detailed debug logging",
       "default": false,
       "editor": "switch"
     }
