@@ -460,10 +460,14 @@ class ScreenshotWorker {
             result.screenshotSize = screenshot.size
             result.loadedAt = new Date().toISOString()
             
-            // Save screenshot to output (base64 for local testing)
-            // In cloud environment, would save to storage
+            // Convert screenshot to base64 and embed in output
+            // This is required because Cafe SDK doesn't support file storage
+            const base64 = screenshot.screenshotBuffer.toString('base64')
+            result.screenshotBase64 = base64
+            result.screenshotDataUrl = `data:${screenshot.contentType};base64,${base64}`
+            
+            // Save screenshot to file for local testing
             if (this.isLocalBrowser) {
-                // Save to file for local testing
                 const fs = require('fs')
                 const outputPath = `./${screenshot.screenshotPath}`
                 fs.writeFileSync(outputPath, screenshot.screenshotBuffer)
@@ -505,8 +509,9 @@ class ScreenshotWorker {
             { label: 'URL', key: 'url', format: 'text' },
             { label: 'Title', key: 'title', format: 'text' },
             { label: 'Screenshot', key: 'screenshotName', format: 'text' },
-            { label: 'Size', key: 'screenshotSize', format: 'integer' },
+            { label: 'Size (KB)', key: 'screenshotSize', format: 'integer' },
             { label: 'Format', key: 'format', format: 'text' },
+            { label: 'Preview', key: 'screenshotDataUrl', format: 'image' },
             { label: 'Error', key: 'error', format: 'text' }
         ]
         await cafesdk.result.setTableHeader(headers)

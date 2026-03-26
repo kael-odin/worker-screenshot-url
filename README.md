@@ -48,9 +48,16 @@
   "screenshotSize": 14164,
   "format": "png",
   "fullPage": true,
+  "screenshotBase64": "iVBORw0KGgo...(Base64编码的图片数据)",
+  "screenshotDataUrl": "data:image/png;base64,iVBORw0KGgo...",
   "error": null
 }
 ```
+
+> 💡 **截图存储说明**：由于平台限制，截图以 **Base64** 格式嵌入输出数据中。您可以通过以下方式使用截图：
+> - **直接预览**：`screenshotDataUrl` 可直接用于 HTML `<img>` 标签
+> - **保存文件**：将 `screenshotBase64` 解码为二进制保存为图片文件
+> - **数据处理**：使用 JSON 工具提取 base64 数据后转换为图片
 
 ### 🔧 使用场景
 
@@ -120,9 +127,16 @@ Website Screenshot Tool helps you quickly and efficiently capture screenshots of
   "screenshotSize": 14164,
   "format": "png",
   "fullPage": true,
+  "screenshotBase64": "iVBORw0KGgo...(Base64 encoded image data)",
+  "screenshotDataUrl": "data:image/png;base64,iVBORw0KGgo...",
   "error": null
 }
 ```
+
+> 💡 **Screenshot Storage**: Due to platform limitations, screenshots are embedded as **Base64** in the output. You can:
+> - **Direct Preview**: Use `screenshotDataUrl` in HTML `<img>` tags
+> - **Save as File**: Decode `screenshotBase64` to binary and save as image file
+> - **Data Processing**: Extract base64 data and convert to image using JSON tools
 
 ### 🔧 Use Cases
 
